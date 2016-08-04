@@ -212,6 +212,11 @@ $(function() {
     $('#button_research').val('Srart Serching');
 
     var timer = function() {
+        var left_down_btn = $('.leaflet-bar.leaflet-control.leaflet-control-custom.leaflet-control-command-interior');
+        left_down_btn.html("Pokémon setting");
+        left_down_btn.css('width','150px');
+        var is_first = false;
+
         $.each(pokemon_arr, function(index, value) {
             var item = $('#area_configwindow_list_' + (index + 1));
             var en_name = pokemon_arr[index];
@@ -220,21 +225,24 @@ $(function() {
                 return;
             }
 
-            item.prev().prev().html('You can hide no use Pokémon.');
-            item.prev().children().eq(0).val('a');
-            item.prev().children().eq(1).val('b');
+            if(!is_first) {
+              item.prev().prev().html('You can hide no use Pokémon.');
+              item.prev().children().eq(0).val('All Select');
+              item.prev().children().eq(1).val('All Deselect');
+            }
+            is_first = true;
 
             // console.log(poke_html);
             var img_txt = item.find("img").prop('outerHTML');
 
             // textクラスを書き換え
             item.html(img_txt + " " + en_name);
-            stopTimer();
+            // stopTimer();
         });
     };
 
     var startTimer = function() {
-        timerID = setInterval(timer /*定期的に呼び出す関数名*/ , 1000 /*呼び出す間隔*/ );
+        timerID = setInterval(timer /*定期的に呼び出す関数名*/ , 100 /*呼び出す間隔*/ );
     };
 
     startTimer();
