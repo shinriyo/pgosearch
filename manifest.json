@@ -1,0 +1,33 @@
+{
+  "name": "P-GO SEARCH for English",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "icons": { "48": "icon48.png",
+            "128": "icon128.png" },
+  "description": "P-GO SEARCH for English",
+  "browser_action" : {
+    "default_icon": "icon19.png",
+    "default_popup" : "popup.html"
+  },
+  "permissions": [
+    "tabs", "http://*/*", "https://*/*"
+  ],
+  "content_scripts": [
+      {
+          "matches": [
+            "https://pmap.kuku.lu/*"
+          ],
+          "css": ["stylesheet/chosen.min.css"],
+          "js": [
+            "js/jquery-2.1.4.min.js",
+            "myscript.js",
+            "js/chosen.jquery.min.js"
+          ],
+          "web_accessible_resources": [
+            "stylesheet/chosen.min.css",
+            "js/jquery-2.1.4.min.js",
+            "js/chosen.jquery.min.js"
+          ]
+      }
+  ]
+}
