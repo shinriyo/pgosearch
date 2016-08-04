@@ -208,19 +208,26 @@ $(function() {
         clearInterval(timerID);
     };
 
+    // 捜索開始
+    $('#button_research').val('Srart Serching');
+
     var timer = function() {
         $.each(pokemon_arr, function(index, value) {
             var item = $('#area_configwindow_list_' + (index + 1));
             var en_name = pokemon_arr[index];
-            // textクラスを書き換え
-            // item.find("img").text(pokemon_arr[index]);
             var poke_html = item.html()
             if (typeof poke_html === "undefined") {
                 return;
             }
 
+            item.prev().prev().html('You can hide no use Pokémon.');
+            item.prev().children().eq(0).val('a');
+            item.prev().children().eq(1).val('b');
+
             // console.log(poke_html);
             var img_txt = item.find("img").prop('outerHTML');
+
+            // textクラスを書き換え
             item.html(img_txt + " " + en_name);
             stopTimer();
         });
