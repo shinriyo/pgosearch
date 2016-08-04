@@ -16,11 +16,11 @@ function moveUrl(url) {
     if (readyState === 'complete' || readyState === 'interactive') {　　 loadedListener();　 } else {　　 doc.addEventListener("DOMContentLoaded", loadedListener, false);　 }
 })(function() {
     // popup.html.
-    var dev_movedebug_btn = document.getElementById('pokevision');
+    var dev_movedebug_btn = document.getElementById('pgosearch');
     if (dev_movedebug_btn != null) {
         // 処理を入れておく
         dev_movedebug_btn.addEventListener('click', function() {
-            moveUrl("https://pokevision.com/");
+            moveUrl("https://pmap.kuku.lu/");
         });
     }
 });
